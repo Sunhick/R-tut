@@ -90,9 +90,11 @@ p2014 <- k[k$V3 == 2014,]
 p2014 <- aggregate(cbind(V5)~V4, data=p2014, FUN=sum)
 
 m <- merge(p2014, p1910, by='V4')
-m$change <- 100*(m$V5.x-m$V5.y)/m$V5.y
-m <- m[c('V4', 'change')]
-head(m[order(m$change, decreasing=TRUE), ], n=10)
+m$raise <- 100*(m$V5.x-m$V5.y)/m$V5.y
+m <- m[c('V4', 'raise')]
+
+head(m[order(m$raise, decreasing=TRUE), ], n=10)
+tail(m[order(m$raise, decreasing=TRUE), ], n=10)
 
 # detach dataset
 detach(dataset)
